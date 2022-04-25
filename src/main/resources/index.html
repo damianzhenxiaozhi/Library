@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
+<!-- Begin Head -->
+
+<head>
+    <title>图书管理系统</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta name="MobileOptimized" content="320">
+    <!--Start Style -->
+    <link rel="stylesheet" type="text/css" href="static/css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/icofont.min.css">
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+	<link rel="stylesheet" id="theme-change" type="text/css" href="">
+</head>
+
+<body>
+	<div class="loader">
+	  <div class="spinner">
+		<img src="static/picture/loader.gif" alt="">
+	  </div> 
+	</div>
+    <!-- Main Body -->
+    <div class="page-wrapper">
+        <!-- Header Start -->
+        <header th:replace="header.html::common_header"></header>
+        <!-- Container Start -->
+        <div class="page-wrapper">
+            <div class="main-content">
+                <!-- Products Orders Start -->
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card chart-card">
+                            <div class="card-header">
+                                <h4>借阅列表</h4>
+                            </div>
+                            <div class="card-body pb-4">
+                                <div class="chart-holder">
+                                    <div class="table-responsive">
+                                        <table class="table table-styled mb-0">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>书籍名称</th>
+                                                    <th>借阅时间</th>
+                                                    <th>借阅人</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#JH2033</td>
+                                                    <td>钢铁是怎么炼成的</td>
+                                                    <td>22/06/2021</td>
+                                                    <td>小刚</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+				<div class="ad-footer-btm">
+					<p>Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="https://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+				</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Start -->
+	<script src="static/js/jquery.min.js"></script>
+    <script src="static/js/popper.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+	<script src="static/js/swiper.min.js"></script>
+    <script src="static/js/apexcharts.min.js"></script>
+    <script src="static/js/control-chart-apexcharts.js"></script>
+	<!-- Page Specific -->
+    <script src="static/js/nice-select.min.js"></script>
+    <!-- Custom Script -->
+    <script src="static/js/custom.js"></script>
+</body>
+
+</html>
