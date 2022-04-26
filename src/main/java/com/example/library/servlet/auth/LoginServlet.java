@@ -1,6 +1,6 @@
-package com.example.library.servlet;
+package com.example.library.servlet.auth;
 
-import com.example.library.service.LoginService;
+import com.example.library.service.auth.AuthService;
 import com.example.library.util.ServiceContainer;
 import com.example.library.util.ThymeleafUtil;
 import jakarta.servlet.ServletException;
@@ -15,11 +15,11 @@ import java.io.IOException;
 
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    private LoginService loginService;
+    private AuthService authService;
 
     @Override
     public void init() throws ServletException {
-        loginService = ServiceContainer.getLoginService();
+        authService = ServiceContainer.getAuthService();
     }
 
     @Override
@@ -44,7 +44,7 @@ public class LoginServlet extends HttpServlet {
         String rememberMe = req.getParameter("rememberMe");
 
         HttpSession session = req.getSession();
-        if (loginService.login(username, password, rememberMe, session)) {
+        if (authService.login(username, password, rememberMe, session)) {
             resp.sendRedirect("index");
             return;
         }

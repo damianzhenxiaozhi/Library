@@ -1,7 +1,9 @@
 package com.example.library.util;
 
-import com.example.library.service.LoginService;
-import com.example.library.service.impl.LoginServiceImpl;
+import com.example.library.service.auth.AuthService;
+import com.example.library.service.auth.impl.AuthServiceImpl;
+import com.example.library.service.core.BorrowService;
+import com.example.library.service.core.impl.BorrowServiceImpl;
 
 /**
  * @author fanzhen
@@ -9,13 +11,19 @@ import com.example.library.service.impl.LoginServiceImpl;
  * @date 2022/4/25
  */
 public class ServiceContainer {
-    private static final LoginService loginService;
+    private static final AuthService authService;
+    private static final BorrowService borrowService;
 
     static {
-        loginService = new LoginServiceImpl();
+        authService = new AuthServiceImpl();
+        borrowService = new BorrowServiceImpl();
     }
 
-    public static LoginService getLoginService() {
-        return loginService;
+    public static AuthService getAuthService() {
+        return authService;
+    }
+
+    public static BorrowService getBorrowService() {
+        return borrowService;
     }
 }
