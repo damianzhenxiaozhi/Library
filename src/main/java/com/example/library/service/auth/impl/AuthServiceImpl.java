@@ -14,7 +14,7 @@ import org.apache.ibatis.session.SqlSession;
  */
 public class AuthServiceImpl implements AuthService {
     @Override
-    public boolean login(String username, String password, String rememberMe, HttpSession session) {
+    public boolean login(String username, String password, HttpSession session) {
         try (SqlSession sqlSession = MybatisUtil.getSession(true)) {
             UserDao userDao = sqlSession.getMapper(UserDao.class);
             User user = userDao.getUser(username, password);

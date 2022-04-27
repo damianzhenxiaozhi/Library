@@ -20,15 +20,23 @@ public class BorrowServiceImpl implements BorrowService {
     }
 
     @Override
-    public boolean addBorrow(Integer bookId, Integer studentId) {
+    public boolean addBorrow(Integer studentId, Integer bookId) {
         try (SqlSession sqlSession = MybatisUtil.getSession(true)) {
             CoreDao coreDao = sqlSession.getMapper(CoreDao.class);
-            int count = coreDao.insertBorrow(bookId, studentId);
+            int count = coreDao.insertBorrow(studentId, bookId);
             if (count == 1) {
                 return true;
             } else {
                 return false;
             }
+        }
+    }
+
+    @Override
+    public void returnBook(int borrowId) {
+        try (SqlSession sqlSession = MybatisUtil.getSession(true)) {
+            CoreDao coreDao = sqlSession.getMapper(CoreDao.class);
+            coreDao.deleteBorrow(borrowId);
         }
     }
 }

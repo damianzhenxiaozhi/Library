@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public class Borrow {
     private Integer id;
     private Integer bookId;
-    private String bookName;
+    private String bookTitle;
     private LocalDateTime borrowTime;
     private Integer studentId;
     private String studentName;

@@ -1,7 +1,6 @@
 package com.example.library.servlet.core;
 
 import com.example.library.entity.Book;
-import com.example.library.entity.Borrow;
 import com.example.library.entity.Student;
 import com.example.library.entity.User;
 import com.example.library.service.core.BookService;
@@ -19,22 +18,17 @@ import org.thymeleaf.context.Context;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * @author fanzhen
- * @version 1.0
- * @date 2022/4/25
- */
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet {
+@WebServlet("/add-borrow")
+public class BorrowServlet extends HttpServlet {
     private BorrowService borrowService;
-    private BookService bookService;
     private StudentService studentService;
+    private BookService bookService;
 
     @Override
     public void init() throws ServletException {
         borrowService = ServiceContainer.getBorrowService();
-        bookService = ServiceContainer.getBookService();
         studentService = ServiceContainer.getStudentService();
+        bookService = ServiceContainer.getBookService();
     }
 
     @Override
@@ -43,15 +37,20 @@ public class IndexServlet extends HttpServlet {
         User user = (User) req.getSession().getAttribute("user");
         context.setVariable("nickname", user.getNickname());
 
-        List<Borrow> borrowList = borrowService.getBorrowList();
-        context.setVariable("borrowList", borrowList);
+        List<Book> bookList = bookService.getUnBorrowedBookList();
+        context.setVariable("bookList", bookList);
 
         List<Student> studentList = studentService.getStudentList();
-        context.setVariable("studentCount", studentList.size());
+        context.setVariable("studentList", studentList);
 
-        List<Book> bookList = bookService.getBookList();
-        context.setVariable("bookCount", bookList.size());
+        ThymeleafUtil.process("add-borrow.html", context, resp.getWriter());
+    }
 
-        ThymeleafUtil.process("index.html", context, resp.getWriter());
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int studentId = Integer.parseInt(req.getParameter("studentId"));
+        int bookId = Integer.parseInt(req.getParameter("bookId"));
+        borrowService.addBorrow(studentId, bookId);
+        resp.sendRedirect("index");
     }
 }

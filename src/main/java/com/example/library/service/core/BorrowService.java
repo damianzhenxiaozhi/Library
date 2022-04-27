@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface BorrowService {
     List<Borrow> getBorrowList();
-    boolean addBorrow(Integer bookId, Integer studentId);
+    boolean addBorrow(Integer studentId, Integer bookId);
+    void returnBook(int borrowId);
 }
